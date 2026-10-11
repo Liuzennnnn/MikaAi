@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090814">
+<title>Mika berk't AI</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #321344, #090814 65%);
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #100c1e;
+    border-bottom: 1px solid #392344;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff4fa3, #8b5cff);
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+header h2 {
+    color: #ff83c1;
+}
+
+header p {
+    font-size: 12px;
+    color: #bba9cc;
+    margin-top: 4px;
+}
+
+main {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px 14px 30px;
+}
+
+.welcome {
+    text-align: center;
+    padding: 28px 16px;
+    border: 1px solid #63305d;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #291332, #171329);
+}
+
+.mascot {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.welcome h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.welcome h1 span {
+    color: #ff83c1;
+}
+
+.welcome p {
+    color: #c4b7d4;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+button {
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.start {
+    background: linear-gradient(100deg, #ff4fa3, #a95cff);
+    color: white;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 14px;
+    font-weight: bold;
+}
+
+h3 {
+    margin: 24px 0 12px;
+}
+
+.tools {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.tool {
+    padding: 17px 12px;
+    text-align: left;
+    background: #19152a;
+    border: 1px solid #423252;
+    border-radius: 16px;
+    color: white;
+}
+
+.tool:active {
+    background: #382044;
+}
+
+.tool .emoji {
+    font-size: 25px;
+}
+
+.tool strong {
+    display: block;
+    margin: 9px 0 5px;
+}
+
+.tool small {
+    color: #bba9cc;
+    line-height: 1.5;
+}
+
+.chat {
+    margin-top: 22px;
+    background: #100e1d;
+    border: 1px solid #423252;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.chat-title {
+    padding: 15px;
+    background: #1b162b;
+    font-weight: bold;
+    border-bottom: 1px solid #423252;
+}
+
+#messages {
+    padding: 14px;
+    min-height: 220px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.message {
+    max-width: 90%;
+    padding: 12px;
+    border-radius: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.bot {
+    align-self: flex-start;
+    background: #29223c;
+}
+
+.user {
+    align-self: flex-end;
+    background: linear-gradient(120deg, #e93f91, #9954e8);
+}
+
+.chat-form {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid #423252;
+}
+
+input {
+    width: 100%;
+    min-width: 0;
+    padding: 13px;
+    border-radius: 12px;
+    background: #211b31;
+    color: white;
+    border: 1px solid #493657;
+    outline: none;
+    font-size: 15px;
+}
+
+input:focus {
+    border-color: #ff4fa3;
+}
+
+.send {
+    min-width: 48px;
+    border: none;
+    border-radius: 12px;
+    background: #ff4fa3;
+    color: white;
+    font-size: 20px;
+}
+
+.note {
+    color: #a99bb9;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 22px;
+    color: #a99bb9;
+    font-size: 12px;
+}
+
+@media (min-width: 550px) {
+    .tools {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">M</div>
+    <div>
+        <h2>Mika berk't</h2>
+        <p>AI Assistant • Teman Digital ✨</p>
+    </div>
+</header>
+
+<main>
+
+<section class="welcome">
+    <div class="mascot">🌙✨</div>
+    <h1>Halo, aku <span>Mika berk't!</span></h1>
+    <p>
+        Teman digital untuk ngobrol, belajar, mencari ide,
+        dan membantu membuat kode. Yuk, mulai sekarang!
+    </p>
+    <button class="start" onclick="mulaiChat()">
+        Mulai Ngobrol ↗
+    </button>
+</section>
+
+<h3>✦ Menu Cepat</h3>
+
+<section class="tools">
+
+    <button class="tool" onclick="quick('Bantu aku belajar matematika dengan langkah-langkahnya.')">
+        <span class="emoji">📚</span>
+        <strong>Helper Tugas</strong>
+        <small>Bantuan belajar dan soal</small>
+    </button>
+
+    <button class="tool" onclick="quick('Buatkan contoh kode HTML website yang keren.')">
+        <span class="emoji">💻</span>
+        <strong>Generator Kode</strong>
+        <small>HTML, CSS, JavaScript</small>
+    </button>
+
+    <button class="tool" onclick="quick('Berikan 5 ide konten gaming YouTube Shorts.')">
+        <span class="emoji">🎮</span>
+        <strong>Ide Konten</strong>
+        <small>Gaming dan YouTube</small>
+    </button>
+
+    <button class="tool" onclick="quick('Jelaskan teknologi AI dengan bahasa sederhana.')">
+        <span class="emoji">🧠</span>
+        <strong>Tips & Info</strong>
+        <small>Pengetahuan teknologi</small>
+    </button>
+
+    <button class="tool" onclick="quick('Buatkan cerita fantasi pendek.')">
+        <span class="emoji">📖</span>
+        <strong>Penulis Cerita</strong>
+        <small>Cerita dan kreativitas</small>
+    </button>
+
+    <button class="tool" onclick="quick('Apa saja yang bisa kamu bantu?')">
+        <span class="emoji">💬</span>
+        <strong>Ngobrol Santai</strong>
+        <small>Tanya dan diskusi</small>
+    </button>
+
+</section>
+
+<section class="chat" id="chat">
+    <div class="chat-title">💗 Chat bersama Mika</div>
+
+    <div id="messages">
+        <div class="message bot">
+            Haii! 👋 Aku Mika berk't.
+
+            Tulis pesanmu di bawah, ya!
+            Aku siap membantu kamu ✨
+        </div>
+    </div>
+
+    <form class="chat-form" id="chatForm">
+        <input id="prompt" placeholder="Ketik pesan di sini..." required>
+        <button class="send" type="submit">➤</button>
+    </form>
+</section>
+
+<p class="note">
+    Catatan: Ini masih versi demo offline dengan balasan
+    otomatis sederhana, belum terhubung ke AI sungguhan.
+    Untuk menggunakan model AI sungguhan, diperlukan
+    koneksi backend yang aman.
+</p>
+
+</main>
+
+<footer>
+    Mika berk't ♡<br>
+    Smart • Simple • Powerful
+</footer>
+
+<script>
+const messages = document.getElementById("messages");
+const input = document.getElementById("prompt");
+
+function tambahPesan(teks, tipe) {
+    const div = document.createElement("div");
+    div.className = "message " + tipe;
+    div.textContent = teks;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+}
+
+function balasan(teks) {
+    const t = teks.toLowerCase();
+
+    if (/halo|hai|hello|pagi|siang|malam/.test(t)) {
+        return "Hai juga! 👋 Aku Mika berk't. Ada yang bisa aku bantu hari ini? ✨";
+    }
+
+    if (/matematika|pecahan|hitung|tugas|soal/.test(t)) {
+        return "Siap bantu! 📚 Kirim soal lengkapnya, ya. Aku bisa bantu menjelaskan langkah penyelesaian dengan bahasa sederhana.";
+    }
+
+    if (/html|website|kode|coding|css|javascript/.test(t)) {
+        return "Gas bikin website! 💻 Sebutkan fitur dan tampilan yang kamu inginkan. Aku bisa bantu menulis contoh HTML, CSS, dan JavaScript.";
+    }
+
+    if (/youtube|shorts|gaming|viral|konten/.test(t)) {
+        return "Tips konten 🎮: gunakan pembuka yang menarik, tampilkan bagian paling seru di awal, tambahkan teks yang mudah dibaca, dan buat penonton penasaran sampai akhir.";
+    }
+
+    if (/cerita|fantasi|puisi|caption/.test(t)) {
+        return "Siap! ✨ Sebutkan tema, tokoh, dan panjang tulisan yang kamu inginkan. Aku bantu membuat contohnya.";
+    }
+
+    if (/siapa kamu|nama kamu/.test(t)) {
+        return "Aku Mika berk't! 💗 Asisten digital versi demo yang dirancang untuk membantu belajar, membuat ide, dan menulis kode.";
+    }
+
+    return "Aku menerima pesanmu! 💗 Namun, aku masih menggunakan sistem demo offline, jadi belum bisa menjawab semua pertanyaan seperti AI sungguhan. Kamu tetap bisa mencoba menu-menu di atas!";
+}
+
+document.getElementById("chatForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const teks = input.value.trim();
+
+    if (!teks) return;
+
+    tambahPesan(teks, "user");
+    input.value = "";
+
+    setTimeout(function() {
+        tambahPesan(balasan(teks), "bot");
+    }, 400);
+});
+
+function quick(teks) {
+    input.value = teks;
+    mulaiChat();
+}
+
+function mulaiChat() {
+    document.getElementById("chat").scrollIntoView({
+        behavior: "smooth"
+    });
+    input.focus();
+}
+</script>
+
+</body>
+</html>
